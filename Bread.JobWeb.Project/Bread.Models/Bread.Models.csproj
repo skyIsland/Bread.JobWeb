@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NewLife.XCode" Version="10.2.2021.809" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Build_netcore.log">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Build_netcore.tt</DependentUpon>
+    </None>
+    <None Update="Build_netcore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Build_netcore.log</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

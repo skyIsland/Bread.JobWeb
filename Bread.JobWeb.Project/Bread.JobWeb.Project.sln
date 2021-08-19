@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bread.JobWeb.Project", "Bread.JobWeb.Project\Bread.JobWeb.Project.csproj", "{CF55D837-2211-4346-A3E2-4F0760BDB57E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bread.Models", "Bread.Models\Bread.Models.csproj", "{55064F79-E486-49D3-80A2-D3E12087712F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF55D837-2211-4346-A3E2-4F0760BDB57E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF55D837-2211-4346-A3E2-4F0760BDB57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF55D837-2211-4346-A3E2-4F0760BDB57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF55D837-2211-4346-A3E2-4F0760BDB57E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55064F79-E486-49D3-80A2-D3E12087712F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55064F79-E486-49D3-80A2-D3E12087712F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55064F79-E486-49D3-80A2-D3E12087712F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55064F79-E486-49D3-80A2-D3E12087712F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55DDFED7-7CD1-4490-B9E5-8B8563B2786F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tables xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="http://www.newlifex.com http://www.newlifex.com/Model2020.xsd" NameSpace="XCode.Membership" ConnName="Membership" Output="" BaseClass="Entity" xmlns="http://www.newlifex.com/Model2020.xsd">
+  <Table Name="JobCategory" Description="岗位分类" ConnName="bread" DbType="SqlServer" NameSpace="Bread.Models" Output="Models" RenderGenEntity="true">
+    <Columns>
+      <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
+      <Column Name="Name" DataType="String" Master="True" Nullable="False" Description="名称" />
+      <Column Name="CreateTime" DataType="DateTime"  Nullable="False" Description="创建时间" />
+      <Column Name="UpdateTime" DataType="DateTime"  Nullable="False" Description="更新时间" />
+      <Column Name="CreateUserID" DataType="String"  Nullable="False" Description="创建人" />
+      <Column Name="UpdateUserID" DataType="String"  Nullable="False" Description="更新人" />
+    </Columns>
+  </Table>
+  <Table Name="JobInfo" Description="岗位" ConnName="bread" DbType="SqlServer" NameSpace="Bread.Models" Output="Models" RenderGenEntity="true">
+    <Columns>
+      <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
+      <Column Name="JobCategoryID" DataType="Int32" Description="岗位分类" />
+      <Column Name="Name" DataType="String" Description="岗位名称" />
+      <Column Name="Address" DataType="String" Description="岗位地点" />
+      <Column Name="PublishTime" DataType="DateTime" Description="发布时间" />
+      <Column Name="IsUrgent" DataType="Boolean" Description="是否加急" />
+      <Column Name="CreateTime" DataType="DateTime" Master="True" Nullable="False" Description="创建时间" />
+      <Column Name="UpdateTime" DataType="DateTime" Master="True" Nullable="False" Description="更新时间" />
+      <Column Name="CreateUserID" DataType="String" Master="True" Nullable="False" Description="创建人" />
+      <Column Name="UpdateUserID" DataType="String" Master="True" Nullable="False" Description="更新人" />
+    </Columns>
+  </Table>
+</Tables>
