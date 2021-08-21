@@ -13,5 +13,11 @@ namespace Bread.Areas.Job.Controllers
     [DisplayName("岗位分类")]
     public class JobCategoryManagerController : EntityController<JobCategory>
     {
+        static JobCategoryManagerController()
+        {
+            AddFormFields.RemoveCreateField();
+            EditFormFields.RemoveCreateField();
+            EditFormFields.RemoveUpdateField();
+        }
     }
 }

@@ -31,10 +31,14 @@ namespace Bread.Models
         #region 对象操作
         static JobCategory()
         {
+            // 累加字段，生成 Update xx Set Count=Count+1234 Where xxx
+            //var df = Meta.Factory.AdditionalFields;
+            //df.Add(nameof(CreateUserID));
 
             // 过滤器 UserModule、TimeModule、IPModule
             Meta.Modules.Add<UserModule>();
             Meta.Modules.Add<TimeModule>();
+            Meta.Modules.Add<IPModule>();
         }
 
         /// <summary>验证并修补数据，通过抛出异常的方式提示验证失败。</summary>
@@ -44,39 +48,48 @@ namespace Bread.Models
             // 如果没有脏数据，则不需要进行任何处理
             if (!HasDirty) return;
 
-            // 这里验证参数范围，建议抛出参数异常，指定参数名，前端用户界面可以捕获参数异常并聚焦到对应的参数输入框
-            if (Name.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Name), "标题不能为空！");
-            if (CreateUserID.IsNullOrEmpty()) throw new ArgumentNullException(nameof(CreateUserID), "创建人不能为空！");
-            if (UpdateUserID.IsNullOrEmpty()) throw new ArgumentNullException(nameof(UpdateUserID), "更新人不能为空！");
-
             // 建议先调用基类方法，基类方法会做一些统一处理
             base.Valid(isNew);
 
             // 在新插入数据或者修改了指定字段时进行修正
-            if (isNew && !Dirtys[nameof(CreateTime)]) CreateTime = DateTime.Now;
-            if (!Dirtys[nameof(UpdateTime)]) UpdateTime = DateTime.Now;
+            // 处理当前已登录用户信息，可以由UserModule过滤器代劳
+            /*var user = ManageProvider.User;
+            if (user != null)
+            {
+                if (isNew && !Dirtys[nameof(CreateUserID)]) CreateUserID = user.ID;
+                if (!Dirtys[nameof(UpdateUserID)]) UpdateUserID = user.ID;
+            }*/
+            //if (isNew && !Dirtys[nameof(CreateTime)]) CreateTime = DateTime.Now;
+            //if (!Dirtys[nameof(UpdateTime)]) UpdateTime = DateTime.Now;
+            //if (isNew && !Dirtys[nameof(CreateIP)]) CreateIP = ManageProvider.UserHost;
+            //if (!Dirtys[nameof(UpdateIP)]) UpdateIP = ManageProvider.UserHost;
         }
 
-        ///// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
-        //[EditorBrowsable(EditorBrowsableState.Never)]
-        //protected override void InitData()
-        //{
-        //    // InitData一般用于当数据表没有数据时添加一些默认数据，该实体类的任何第一次数据库操作都会触发该方法，默认异步调用
-        //    if (Meta.Session.Count > 0) return;
+        /// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected override void InitData()
+        {
+            // InitData一般用于当数据表没有数据时添加一些默认数据，该实体类的任何第一次数据库操作都会触发该方法，默认异步调用
+            if (Meta.Session.Count > 0) return;
 
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化JobCategory[岗位分类]数据……");
+            if (XTrace.Debug) XTrace.WriteLine("开始初始化JobCategory[岗位分类]数据……");
 
-        //    var entity = new JobCategory();
-        //    //entity.ID = 0;
-        //    entity.Name = "销售类";
-        //    entity.CreateTime = DateTime.Now;
-        //    entity.UpdateTime = DateTime.Now;
-        //    //entity.CreateUserID = ManageProvider.User.ID.ToString();
-        //    //entity.UpdateUserID = ManageProvider.User.ID.ToString();
-        //    entity.Insert();
+            var entity = new JobCategory();
+            entity.ID = 0;
+            entity.Name = "技术类";
+            //entity.CreateUser = "abc";
+            //entity.CreateUserID = 0;
+            //entity.CreateTime = DateTime.Now;
+            //entity.CreateIP = "abc";
+            //entity.UpdateUser = "abc";
+            //entity.UpdateUserID = 0;
+            //entity.UpdateTime = DateTime.Now;
+            //entity.UpdateIP = "abc";
+            //entity.Remark = "abc";
+            entity.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化JobCategory[岗位分类]数据！");
-        //}
+            if (XTrace.Debug) XTrace.WriteLine("完成初始化JobCategory[岗位分类]数据！");
+        }
 
         ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
         ///// <returns></returns>
@@ -94,6 +107,24 @@ namespace Bread.Models
         #endregion
 
         #region 扩展属性
+
+        private int? _jobCount;
+
+        public int? JobCount
+        {
+            get
+            {
+                if (!_jobCount.HasValue)
+                {
+                    var count = JobInfo.FindCount(JobInfo._.JobCategoryID.Equal(this.ID));
+
+                    _jobCount = (int)count;
+                }
+
+                return _jobCount;
+            }
+        }
+
         #endregion
 
         #region 扩展查询

@@ -38,6 +38,7 @@ namespace Bread.Models
             // 过滤器 UserModule、TimeModule、IPModule
             Meta.Modules.Add<UserModule>();
             Meta.Modules.Add<TimeModule>();
+            Meta.Modules.Add<IPModule>();
         }
 
         /// <summary>验证并修补数据，通过抛出异常的方式提示验证失败。</summary>
@@ -47,16 +48,21 @@ namespace Bread.Models
             // 如果没有脏数据，则不需要进行任何处理
             if (!HasDirty) return;
 
-            // 这里验证参数范围，建议抛出参数异常，指定参数名，前端用户界面可以捕获参数异常并聚焦到对应的参数输入框
-            if (CreateUserID.IsNullOrEmpty()) throw new ArgumentNullException(nameof(CreateUserID), "创建人不能为空！");
-            if (UpdateUserID.IsNullOrEmpty()) throw new ArgumentNullException(nameof(UpdateUserID), "更新人不能为空！");
-
             // 建议先调用基类方法，基类方法会做一些统一处理
             base.Valid(isNew);
 
             // 在新插入数据或者修改了指定字段时进行修正
+            // 处理当前已登录用户信息，可以由UserModule过滤器代劳
+            /*var user = ManageProvider.User;
+            if (user != null)
+            {
+                if (isNew && !Dirtys[nameof(CreateUserID)]) CreateUserID = user.ID;
+                if (!Dirtys[nameof(UpdateUserID)]) UpdateUserID = user.ID;
+            }*/
             //if (isNew && !Dirtys[nameof(CreateTime)]) CreateTime = DateTime.Now;
             //if (!Dirtys[nameof(UpdateTime)]) UpdateTime = DateTime.Now;
+            //if (isNew && !Dirtys[nameof(CreateIP)]) CreateIP = ManageProvider.UserHost;
+            //if (!Dirtys[nameof(UpdateIP)]) UpdateIP = ManageProvider.UserHost;
         }
 
         ///// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
@@ -75,10 +81,15 @@ namespace Bread.Models
         //    entity.Address = "abc";
         //    entity.PublishTime = DateTime.Now;
         //    entity.IsUrgent = true;
+        //    entity.CreateUser = "abc";
+        //    entity.CreateUserID = 0;
         //    entity.CreateTime = DateTime.Now;
+        //    entity.CreateIP = "abc";
+        //    entity.UpdateUser = "abc";
+        //    entity.UpdateUserID = 0;
         //    entity.UpdateTime = DateTime.Now;
-        //    entity.CreateUserID = "abc";
-        //    entity.UpdateUserID = "abc";
+        //    entity.UpdateIP = "abc";
+        //    entity.Remark = "abc";
         //    entity.Insert();
 
         //    if (XTrace.Debug) XTrace.WriteLine("完成初始化JobInfo[岗位]数据！");

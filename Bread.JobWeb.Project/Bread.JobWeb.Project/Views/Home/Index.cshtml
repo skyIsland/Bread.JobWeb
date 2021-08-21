@@ -1,1 +1,147 @@
-﻿
+﻿@{
+    Layout = "_Layout1";
+
+    IList<JobCategory> categories = ViewBag.Categories;
+}
+
+<div style="flex: 1 1 0%;">
+    <div>
+        <div id="default_banner" class="compack-model-3yGxYEH9Jh model-16z1iSD_zV"
+             style="padding-top: 0px; padding-bottom: 0px;">
+            <div class="container-3pO8vb3Ceo">
+                <div class="title-1fYxPPFKQL" style="color: rgb(87, 93, 106);"></div>
+                <div class="sub-title-gO6UMORDcE title-1fYxPPFKQL" style="color: rgb(87, 93, 106);">
+                </div>
+            </div>
+            <div class="apply__banner"
+                 style="height: 666px; background-image: url(&quot;https://public-cdn.mokahr.com/e5962b4b-6d95-404f-958f-8038f323bd92.jpg&quot;); cursor: auto; pointer-events: all;">
+            </div>
+        </div>
+        <div class="model-16z1iSD_zV" id="8946718801" style="padding-top: 0px; padding-bottom: 30px;">
+            <div class="module-text-container-23iLqoiB_t wrapper-3nfwJenXPK">
+                <div class="home-title-color title-36vccIVpTm">
+                    <span style="color: rgb(87, 93, 106);"></span>
+                </div>
+                <div class="home-subtitle-color sub-title-1GfPjzo0CD" style="color: rgb(87, 93, 106);">
+                </div>
+            </div>
+            <div>
+                <div class="pic-item-13tVv5JaCB">
+                    <div style="padding-top: 0px; padding-bottom: 0px;">
+                        <div class="module-container-_Q5VZTwTcp big-pic-wrapper-AUnElUMHQf">
+                            <div class="big-pic-KPPJM_MbKq" style="cursor: default;">
+                                <img src="https://public-cdn.mokahr.com/a1dff9e7-858e-488a-a516-2a6555c4c264.jpg?x-oss-process=image/resize,m_lfit,h_0,w_1200"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="module-text-container-23iLqoiB_t">
+                            <div class="home-content-color item-text-OvvkLDLz7i undefined"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grey-model-20xksoH68W model-16z1iSD_zV" id="default_joblist"
+             style="background-color: rgb(242, 242, 242); padding-top: 60px; padding-bottom: 80px;">
+            <div class="module-text-container-23iLqoiB_t wrapper-3nfwJenXPK">
+                <div class="home-title-color title-36vccIVpTm">
+                    <span style="color: rgb(87, 93, 106);">社会招聘职位</span>
+                    <div class="home-title-underline-color underline-3dh1SbobDY"></div>
+                </div>
+                <div class="home-subtitle-color sub-title-1GfPjzo0CD" style="color: rgb(87, 93, 106);">
+                </div>
+            </div>
+            <div class="module-container-_Q5VZTwTcp">
+                <div>
+                    <div style="text-align: center;">
+                        <div class="job-block-wrapper-3DKhdqxcBc">
+
+                            @foreach (var category in categories)
+                            {
+                                <span>
+                                    <a class="job-block-2lsPa1KFlA"
+                                       href="#/jobs?zhineng=67977">
+                                        <div class="home-title-color job-block-title-i8gL2Q9CP2">@category.Name</div>
+                                        <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共@(category.JobCount)个职位</span>
+                                    </a>
+                                </span>
+                            }
+                            @*<span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=67977">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">技术类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共44个职位</span>
+            </a>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=67983">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">销售类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共10个职位</span>
+            </a>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=67978">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">产品类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共4个职位</span>
+            </a>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=67984">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">实施类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共1个职位</span>
+            </a>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=67980">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">运营类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共5个职位</span>
+            </a><br>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=65067">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">市场类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共1个职位</span>
+            </a>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=65065">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">人资类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共6个职位</span>
+            </a>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=70683">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">行政类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共2个职位</span>
+            </a>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=65066">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">财务类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共2个职位</span>
+            </a>
+        </span>
+        <span>
+            <a class="job-block-2lsPa1KFlA"
+               href="#/jobs?zhineng=65064">
+                <div class="home-title-color job-block-title-i8gL2Q9CP2">售后类</div>
+                <span class="job-block-count-3pzAB3QH9x btn-bg-color btn-text-color">共2个职位</span>
+            </a><br>
+        </span>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-box-2euLc8BC3p"></div>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>

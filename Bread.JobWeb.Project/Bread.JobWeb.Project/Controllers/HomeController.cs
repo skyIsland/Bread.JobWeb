@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bread.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace Bread.JobWeb.Project.Controllers
     {
         public IActionResult Index()
         {
+            var categories = JobCategory.FindAll();
+
+            ViewBag.Categories = categories;
             return View();
         }
     }

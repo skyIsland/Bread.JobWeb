@@ -15,7 +15,9 @@ namespace Bread.Areas.Job.Controllers
     {
         static JobManagerController()
         {
-            //var df = 
+            AddFormFields.RemoveCreateField();
+            EditFormFields.RemoveCreateField();
+            EditFormFields.RemoveUpdateField();
         }
     }
 }

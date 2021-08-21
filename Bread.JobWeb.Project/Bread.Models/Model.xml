@@ -3,25 +3,35 @@
   <Table Name="JobCategory" Description="岗位分类" ConnName="bread" DbType="SqlServer" NameSpace="Bread.Models" Output="Models" RenderGenEntity="true">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
-      <Column Name="Name" DataType="String" Master="True" Nullable="False" Description="名称" />
-      <Column Name="CreateTime" DataType="DateTime"  Nullable="False" Description="创建时间" />
-      <Column Name="UpdateTime" DataType="DateTime"  Nullable="False" Description="更新时间" />
-      <Column Name="CreateUserID" DataType="String"  Nullable="False" Description="创建人" />
-      <Column Name="UpdateUserID" DataType="String"  Nullable="False" Description="更新人" />
+      <Column Name="Name" ColumnName="xxx_Nameyyy" DataType="String" Master="True" Description="名称" />
+      <Column Name="CreateUser" DataType="String" Description="创建者" />
+      <Column Name="CreateUserID" DataType="Int32" Description="创建者" />
+      <Column Name="CreateTime" DataType="DateTime" Description="创建时间" />
+      <Column Name="CreateIP" DataType="String" Description="创建地址" />
+      <Column Name="UpdateUser" DataType="String" Description="更新者" />
+      <Column Name="UpdateUserID" DataType="Int32" Description="更新者" />
+      <Column Name="UpdateTime" DataType="DateTime" Description="更新时间" />
+      <Column Name="UpdateIP" DataType="String" Description="更新地址" />
+      <Column Name="Remark" DataType="String" Length="200" Description="备注" />
     </Columns>
   </Table>
   <Table Name="JobInfo" Description="岗位" ConnName="bread" DbType="SqlServer" NameSpace="Bread.Models" Output="Models" RenderGenEntity="true">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="JobCategoryID" DataType="Int32" Description="岗位分类" />
-      <Column Name="Name" DataType="String" Description="岗位名称" />
+      <Column Name="Name" DataType="String" Master="True" Description="岗位名称" />
       <Column Name="Address" DataType="String" Description="岗位地点" />
       <Column Name="PublishTime" DataType="DateTime" Description="发布时间" />
       <Column Name="IsUrgent" DataType="Boolean" Description="是否加急" />
-      <Column Name="CreateTime" DataType="DateTime" Master="True" Nullable="False" Description="创建时间" />
-      <Column Name="UpdateTime" DataType="DateTime" Master="True" Nullable="False" Description="更新时间" />
-      <Column Name="CreateUserID" DataType="String" Master="True" Nullable="False" Description="创建人" />
-      <Column Name="UpdateUserID" DataType="String" Master="True" Nullable="False" Description="更新人" />
+      <Column Name="CreateUser" DataType="String" Description="创建者" />
+      <Column Name="CreateUserID" DataType="Int32" Description="创建者" />
+      <Column Name="CreateTime" DataType="DateTime" Description="创建时间" />
+      <Column Name="CreateIP" DataType="String" Description="创建地址" />
+      <Column Name="UpdateUser" DataType="String" Description="更新者" />
+      <Column Name="UpdateUserID" DataType="Int32" Description="更新者" />
+      <Column Name="UpdateTime" DataType="DateTime" Description="更新时间" />
+      <Column Name="UpdateIP" DataType="String" Description="更新地址" />
+      <Column Name="Remark" DataType="String" Length="200" Description="备注" />
     </Columns>
   </Table>
 </Tables>
