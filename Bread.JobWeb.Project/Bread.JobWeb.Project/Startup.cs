@@ -1,3 +1,4 @@
+using Bread.JobWeb.Project.Task;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,8 @@ namespace Bread.JobWeb.Project
         {
             services.AddControllersWithViews();
             services.AddCube();
+
+            services.AddSingleton<IJobSpider, JobSpider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

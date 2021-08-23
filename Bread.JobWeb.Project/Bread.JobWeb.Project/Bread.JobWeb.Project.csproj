@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.16.0" />
     <PackageReference Include="NewLife.Cube.Core" Version="4.0.2021.809" />
   </ItemGroup>
 
